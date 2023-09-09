@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Image from "next/image";
 import {images} from "@/utils/images";
 import Slider from "@/components/home/Slider";
-import MainContentHoverImage from "@/components/home/MainContentHoverImage";
+import LinkButton from "@/components/LinkButton";
+import MainContentHoverImage from "@/components/MainContentHoverImage";
 
 function MainContent() {
     return (
@@ -51,31 +51,13 @@ function MainContent() {
                         <div className={"flex flex-col overflow-hidden text-[24px] font-[500] relative"}>
                             <ul className={"flex flex-col gap-4"}>
                                 <li className={"flex flex-col items-start"}>
-                                    <Link href={"/"} as={"/"} className={"flex flex-col group gap-1"}>
-                                        <div className={"flex gap-2"}>
-                                            <Image src={images.star} alt={"star"} width={16} height={16}/>
-                                            <p>Instagram</p>
-                                        </div>
-                                        <div className={"w-0 h-[2px] bg-black group-hover:w-full duration-300"}/>
-                                    </Link>
+                                    <LinkButton link={"/"} text={"Instagram"}/>
                                 </li>
                                 <li className={"flex flex-col items-start"}>
-                                    <Link href={"/"} as={"/"} className={"flex flex-col group gap-1"}>
-                                        <div className={"flex gap-2"}>
-                                            <Image src={images.star} alt={"star"} width={16} height={16}/>
-                                            <p>Twitter</p>
-                                        </div>
-                                        <div className={"w-0 h-[2px] bg-black group-hover:w-full duration-300"}/>
-                                    </Link>
+                                    <LinkButton link={"/"} text={"Twitter"}/>
                                 </li>
                                 <li className={"flex flex-col items-start"}>
-                                    <Link href={"/"} as={"/"} className={"flex flex-col group gap-1"}>
-                                        <div className={"flex gap-2"}>
-                                            <Image src={images.star} alt={"star"} width={16} height={16}/>
-                                            <p>Dribbble</p>
-                                        </div>
-                                        <div className={"w-0 h-[2px] bg-black group-hover:w-full duration-300"}/>
-                                    </Link>
+                                    <LinkButton link={"/"} text={"Dribbble"}/>
                                 </li>
                             </ul>
                         </div>
@@ -101,17 +83,17 @@ function MainContent() {
             </div>
 
             <div className={"w-full flex flex-col relative"}>
-                <MainContentHoverImage height={"720px"} link={"/"} image={images.serviceImage1}/>
+                <MainContentHoverImage link={"/"} image={images.serviceImage1}/>
             </div>
             <div className={"w-full flex flex-col relative overflow-hidden"}>
                 <Slider/>
             </div>
             <div className={"w-full flex gap-10"}>
-                <MainContentHoverImage height={"720px"} link={"/"} image={images.serviceImage1}/>
-                <MainContentHoverImage height={"720px"} link={"/"} image={images.serviceImage1}/>
+                <MainContentHoverImage link={"/"} image={images.serviceImage2}/>
+                <MainContentHoverImage link={"/"} image={images.serviceImage3}/>
             </div>
             <div className={"w-full flex flex-col relative"}>
-                <MainContentHoverImage height={"720px"} link={"/"} image={images.serviceImage1}/>
+                <MainContentHoverImage link={"/"} image={images.serviceImage4}/>
             </div>
         </div>
     )
