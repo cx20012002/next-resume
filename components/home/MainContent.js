@@ -10,7 +10,7 @@ function MainContent() {
             bg-[rgba(255,255,255,0.64)] backdrop-blur-[64px] backdrop-filter:blur rounded-t-[40px] 
             relative xl:py-[120px] xl:px-[80px] lg:py-[80px] lg:px-[40px] py-[40px] px-[20px] z-10`}>
             {/* Introduce Section */}
-            <div className={"w-full flex flex-col flex-none justify-start items-start xl:gap-10 gap-5 relative"}>
+            <div className={"w-full flex flex-col flex-none justify-start items-start xl:gap-10 gap-5 relative section"}>
                 {/* Title */}
                 <div className={"flex justify-start flex-shrink"}>
                     <h1 className={"xl:text-[96px] sm:text-[72px] text-[40px] font-bold tracking-tight"}>
@@ -72,10 +72,11 @@ function MainContent() {
                 </div>
             </div>
 
+            {/* Divider */}
             <div className={"w-full h-[1px] bg-neutral-300"}></div>
 
             {/* Services */}
-            <div className={"w-full flex flex-col justify-start items-start relative"}>
+            <div className={"w-full flex flex-col justify-start items-start relative section"}>
                 <div className={"flex flex-col xl:gap-5 gap-3"}>
                     <p className={"xl:text-[32px] md:text-[24px] text-[20px] font-[400]"}>
                         I provide high-quality services:
@@ -101,17 +102,17 @@ function MainContent() {
                 </div>
             </div>
 
-            <div className={"w-full flex flex-col relative"}>
+            <div className={"w-full flex flex-col relative section"}>
                 <MainContentHoverImage link={"/"} image={images.serviceImage1}/>
             </div>
-            <div className={"w-full flex flex-col relative overflow-hidden"}>
+            <div className={"w-full flex flex-col relative overflow-hidden section"}>
                 <Slider/>
             </div>
-            <div className={"w-full flex flex-col md:flex-row gap-10"}>
+            <div className={"w-full flex flex-col md:flex-row gap-10 section"}>
                 <MainContentHoverImage link={"/"} image={images.serviceImage2}/>
                 <MainContentHoverImage link={"/"} image={images.serviceImage3}/>
             </div>
-            <div className={"w-full flex flex-col relative"}>
+            <div className={"w-full flex flex-col relative section"}>
                 <MainContentHoverImage link={"/"} image={images.serviceImage4}/>
             </div>
         </div>

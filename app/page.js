@@ -116,6 +116,28 @@ export default function Home() {
                 loopSlider.timeScale(0.6);
             }
 
+            // Section Parallax Animation
+            const sections = gsap.utils.toArray('.section');
+            sections.forEach((section) => {
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 80%',
+                        end: 'bottom 80%',
+                        // markers: true,
+                        toggleActions: 'play none none reverse',
+                    }
+                })
+                tl.fromTo(section, {
+                    opacity: 0,
+                    translateY: 100,
+                }, {
+                    opacity: 1,
+                    translateY: 0,
+                    duration: 1,
+                })
+            })
+
         }, app)
 
         return () => ctx.revert();
