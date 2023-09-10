@@ -7,7 +7,6 @@ import Header from "@/components/home/Header";
 import NameCard from "@/components/home/NameCard";
 import AnimatedGradientBg from "@/components/home/AnimatedGradientBg";
 import MainContent from "@/components/home/MainContent";
-import Slider from "@/components/home/Slider";
 import {horizontalLoop} from "@/utils/infinitySlide";
 
 
@@ -16,46 +15,53 @@ export default function Home() {
     useLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
+        const mm = gsap.matchMedia(), breakpoint = 768;
+
         const ctx = gsap.context(() => {
             // Name Card Animation with ScrollTrigger
-            gsap.to('.name-card', {
-                scrollTrigger: {
-                    trigger: '.name-card',
-                    start: 'top top',
-                    end: 'bottom top',
-                    scrub: 0.5,
-                },
-                rotationY: 20,
-                translateY: -10,
-                translateX: 10
-            })
+            mm.add({
+                isMobile: `(max-width: ${breakpoint}px)`,
+                isDesktop: `(min-width: ${breakpoint + 1}px)`
+            }, (context) => {
+                const {isDesktop, isMobile} = context.conditions;
 
-            // Hero Text Animation
-            gsap.to('.hero-anim-text div', {
-                translateY: 80,
-                repeat: -1,
-                yoyo: true,
-                ease: 'none',
-                duration: 2,
-            })
+                gsap.to('.name-card', {
+                    scrollTrigger: {
+                        trigger: '.name-card',
+                        start: 'top top',
+                        end: 'bottom top',
+                        scrub: 0.5,
+                    },
+                    rotationY: isMobile ? 0 : 20,
+                    translateY: isMobile ? 0 : -10,
+                    translateX: isMobile ? 0 : 10,
+                })
 
-            gsap.to('.hero-anim-text div:first-child', {
-                translateY: 80,
-                opacity: 0.6,
-                duration: 1.5,
-                ease: 'none',
-                repeat: -1,
-                yoyo: true,
-            })
+                gsap.set('.name-card', {
+                    scale: isMobile ? 0.8 : 1,
+                    transformOrigin: isMobile ? 'top center' : 'center center',
+                })
 
-            gsap.to('.hero-anim-text div:last-child', {
-                translateY: 0,
-                opacity: 0.6,
-                duration: 2,
-                ease: 'none',
-                repeat: -1,
-                yoyo: true,
-            })
+
+                // Hero Text Animation
+                gsap.to('.hero-anim-text div:first-child', {
+                    translateY: 80,
+                    opacity: 0.6,
+                    duration: isMobile ? 2 : 1.5,
+                    ease: 'none',
+                    repeat: -1,
+                    yoyo: true,
+                })
+
+                gsap.to('.hero-anim-text div:last-child', {
+                    translateY: isMobile ? 80 : 0,
+                    opacity: 0.6,
+                    duration: 2,
+                    ease: 'none',
+                    repeat: -1,
+                    yoyo: true,
+                })
+            });
 
             // Hero Background Animation
             gsap.timeline({repeat: -1, yoyo: true})

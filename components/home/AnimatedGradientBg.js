@@ -13,10 +13,10 @@ function AnimatedGradientBg() {
                      background: "linear-gradient(180deg, #f9d1ff 0%, #FFF0DB 100%)",
                      left: "calc(33% - 56% / 2)"
                  }}/>
-            <div className={`w-[1112px] absolute h-[260px] top-[200px] opacity-10 left-1/2 -translate-x-[52%]
-                     text-[140px] font-black flex justify-between hero-anim-text`}>
+            <div className={`w-[1112px] absolute h-[260px] md:top-[200px] top-[500px] opacity-10 left-1/2 md:-translate-x-[52%] -translate-x-1/2
+                     md:text-[140px] text-[80px] font-black flex justify-center md:justify-between hero-anim-text`}>
                 <div className={"self-start"}>Scroll</div>
-                <div className={"translate-y-[80px]"}>down</div>
+                <div className={"md:translate-y-[80px] translate-y-0"}>down</div>
             </div>
         </div>
     )
