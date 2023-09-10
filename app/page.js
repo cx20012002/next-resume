@@ -123,7 +123,7 @@ export default function Home() {
     }, [])
 
     return (
-        <main className={"w-full items-center flex flex-col bg-neutral-50 font-inter relative"} ref={app}>
+        <main className={"w-full items-center flex flex-col bg-neutral-50 font-inter overflow-hidden relative"} ref={app}>
             <Header/>
             <NameCard/>
             <AnimatedGradientBg/>
