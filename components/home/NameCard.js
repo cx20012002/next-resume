@@ -1,7 +1,65 @@
+'use client'
+
 import Image from "next/image";
 import {images} from "@/utils/images";
+import {useLayoutEffect} from "react";
+import gsap from "gsap";
+import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
 
 function NameCard() {
+    useLayoutEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        const ctx = gsap.context(()=>{
+            const mm = gsap.matchMedia(), breakpoint = 768;
+            // Name Card Animation with ScrollTrigger
+            mm.add({
+                isMobile: `(max-width: ${breakpoint}px)`,
+                isDesktop: `(min-width: ${breakpoint + 1}px)`
+            }, (context) => {
+                const {isDesktop, isMobile} = context.conditions;
+
+                gsap.to('.name-card', {
+                    scrollTrigger: {
+                        trigger: '.name-card',
+                        start: 'top top',
+                        end: 'bottom top',
+                        scrub: 0.5,
+                    },
+                    rotationY: isMobile ? 0 : 20,
+                    translateY: isMobile ? 0 : -10,
+                    translateX: isMobile ? 0 : 10,
+                })
+
+                gsap.set('.name-card', {
+                    scale: isMobile ? 0.8 : 1,
+                    transformOrigin: isMobile ? 'top center' : 'center center',
+                })
+
+                // Hero Text Animation
+                gsap.to('.hero-anim-text div:first-child', {
+                    translateY: 80,
+                    opacity: 0.6,
+                    duration: isMobile ? 2 : 1.5,
+                    ease: 'none',
+                    repeat: -1,
+                    yoyo: true,
+                })
+
+                gsap.to('.hero-anim-text div:last-child', {
+                    translateY: isMobile ? 80 : 0,
+                    opacity: 0.6,
+                    duration: 2,
+                    ease: 'none',
+                    repeat: -1,
+                    yoyo: true,
+                })
+            });
+        })
+
+        return () => ctx.revert();
+
+    }, []);
+
     return (
         <div className={"w-[400px] h-[768px] fixed top-0 z-10 name-card"}
              style={{transform: "perspective(1200px)"}}>

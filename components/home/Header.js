@@ -5,7 +5,7 @@ import ContactButton from "@/components/ContactButton";
 
 function Header() {
     return (
-        <nav className={"w-full flex justify-between md:px-16 px-3 py-10"}>
+        <nav className={"w-full flex justify-between md:px-16 px-3 py-10 z-20"}>
             <div>
                 <Link href={"/"} as={"/"} className={"flex gap-2 items-center"}>
                     <div className={"md:scale-100 scale-75"}>
@@ -15,7 +15,7 @@ function Header() {
                 </Link>
             </div>
             <div className={"flex items-center gap-10 md:text-[20px] text-[15px] font-[500]"}>
-                <Link href={"/"} as={"/"} className={""}>About</Link>
+                <Link href={"/about"} as={"/about"} className={""}>About</Link>
                 <ContactButton/>
             </div>
         </nav>
