@@ -1,12 +1,7 @@
-'use client'
-
 import './globals.css'
 import {Inter} from 'next/font/google'
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import {useLayoutEffect, useRef} from "react";
-import gsap from "gsap";
-import {ScrollTrigger} from "gsap/dist/ScrollTrigger";
 
 const inter = Inter({
     subsets: ['latin'],
@@ -20,30 +15,9 @@ export const metadata = {
 }
 
 export default function RootLayout({children}) {
-    const app = useRef();
-    useLayoutEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
-        // Fixed Nav Animation
-
-        const ctx = gsap.context(() => {
-            const fixedNav = document.querySelector('.fixed-nav');
-            gsap.to(fixedNav, {
-                scrollTrigger: {
-                    trigger: '.start-bg',
-                    start: 'top top',
-                    toggleActions: 'play none none reverse',
-                },
-                translateY: -100,
-                duration: 0.2,
-            })
-        }, app)
-
-        return () => ctx.revert();
-
-    }, []);
     return (
         <html lang="en">
-        <body className={`${inter.variable} flex flex-col items-center justify-start`} ref={app}>
+        <body className={`${inter.variable} flex flex-col items-center justify-start`}>
             <Nav/>
             {children}
             <Footer/>
